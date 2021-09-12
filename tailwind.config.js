@@ -1,16 +1,18 @@
 module.exports = {
   mode: "jit",
-  purge: ["./src/pages/**/*.{js,ts,jsx,tsx}", "./src/components/**/*.{js,ts,jsx,tsx}"],
+  purge: [
+    "./src/pages/**/*.{js,ts,jsx,tsx}",
+    "./src/components/**/*.{js,ts,jsx,tsx}",
+  ],
   darkMode: false, // or 'media' or 'class'
   theme: {
     extend: {
-      colors :{
-        amazon_blue :{
-          light:'#232f2e',
-          DEFAULT:'#131921'
-        }
-
-      }
+      colors: {
+        amazon_blue: {
+          light: "#22313F",
+          DEFAULT: "#131921",
+        },
+      },
     },
   },
   variants: {
