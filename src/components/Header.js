@@ -64,9 +64,6 @@ function Header() {
             <ShoppingCartIcon className="h-10" />
             <p
               className="hidden md:inline-flex mt-2 font-extrabold md:text-sm"
-              onClick={() => {
-                router.push("/");
-              }}
             >
               Basket
             </p>
