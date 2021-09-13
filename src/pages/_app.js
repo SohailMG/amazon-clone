@@ -7,7 +7,9 @@ import { Provider as AuthProvider } from "next-auth/client";
 function MyApp({ Component, pageProps }) {
   return (
     <AuthProvider session={pageProps.session}>
-      <Component {...pageProps} />
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
     </AuthProvider>
   );
 }

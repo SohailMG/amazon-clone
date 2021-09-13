@@ -5,10 +5,16 @@ import {
   ShoppingCartIcon,
 } from "@heroicons/react/outline";
 import { signIn, signOut, useSession } from "next-auth/client";
+import {useRouter } from "next/router"
+import { useSelector } from "react-redux";
+import {selectItems}  from '../slices/basketSlice'
 
 function Header() {
 
     const [session,loading] = useSession();
+    const router = useRouter();
+    const items = useSelector(selectItems)
+    console.log(items)
     
   return (
     <header>
@@ -21,6 +27,9 @@ function Header() {
             height={40}
             objectFit="contain"
             className="cursor-pointer"
+            onClick={() => {
+              router.push("/");
+            }}
           />
         </div>
 
@@ -35,22 +44,30 @@ function Header() {
         </div>
         {/* Right header */}
         <div className="text-white flex items-center text-xs space-x-6 mx-6 whitespace-nowrap">
-          <div onClick={!session ?  signIn : signOut} className="link">
-            <p>
-                {session ? `Hello ${session.user.name}` : 'Sign In'}
-            </p>
+          <div onClick={!session ? signIn : signOut} className="link">
+            <p>{session ? `Hello ${session.user.name}` : "Sign In"}</p>
             <p className="font-extrabold md:text-sm">Account & Lists</p>
           </div>
           <div className="link">
             <p>Returns</p>
             <p className="font-extrabold md:text-sm">& Orders</p>
           </div>
-          <div className="link flex relative items-center">
+          <div
+            className="link flex relative items-center"
+            onClick={() => {
+              router.push("/checkout");
+            }}
+          >
             <span className="absolute top-0 right-0 md:right-10 h-4 w-4 bg-yellow-400 rounded-full text-center text-black font-bold">
-              2
+              {items.length}
             </span>
             <ShoppingCartIcon className="h-10" />
-            <p className="hidden md:inline-flex mt-2 font-extrabold md:text-sm">
+            <p
+              className="hidden md:inline-flex mt-2 font-extrabold md:text-sm"
+              onClick={() => {
+                router.push("/");
+              }}
+            >
               Basket
             </p>
           </div>
