@@ -1,29 +1,60 @@
-# Next.js + Tailwind CSS Example
+## Amazon
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+Full stack amazon clone using nextjs for server side rendering of products,orders and basket items,
+tailwindcss for responsive design, redux for shopping basket functionality, NextAuth authentication with
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
 
-## Preview
+## Techs Used :
+- Nextjs
+    - next-auth
+- Redux
+- firebase
+- Stripe
+    - webhooks
+- Tailwindcss
+- Fake Store API
+- Heroicons
+## Authors
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
+- [@Sohail Gsais](https://www.github.com/SohailMG)
+## Demo
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+- [Live Site](https://https://amazon-clone-iota-liart.vercel.app/)
+## Screenshots
 
-## Deploy your own
+![App Screenshot](AmazonSS.png)
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
+## Related
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+Here are some related projects
 
-## How to use
+[Awesome README](https://github.com/matiassingers/awesome-readme)
+## Lessons Learned
+- Server Side Rendering with nextjs
+- State Management with Redux
+- User Authentication with NextAuth
+- API(Fake Store API)
+- Responsive Design with Tailwindcss
+- Using Stripe API for payment transactions
+- Creating my first webhook with stripe
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+## Installation
+
+clone this repo
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+  cd amazon-clone && npm install or yarn install
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+## Feedback
+
+If you have any feedback, please reach out to us at gsais.sohail9@gmail.com
+
+## Features
+
+- Login with google account
+- Add item to basket
+- Remove item from basket
+- Checkout functionality with stripe
+- Viewing of past orders
+
