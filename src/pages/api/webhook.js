@@ -14,8 +14,8 @@ const stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 const endpointSecret = process.env.STRIPE_SIGNING_SECRET;
 
 const fulfillOrder = async (session) => {
-  console.log("Fulfilling order : ", session);
-  //   FIXME Problem with firebase not storing the order in
+  // console.log("Fulfilling order : ", session);
+
   return app
     .firestore()
     .collection("users")
@@ -26,10 +26,10 @@ const fulfillOrder = async (session) => {
       amount: session.amount_total / 100,
       amount_shipping: session.total_details.amount_shipping / 100,
       images: JSON.parse(session.metadata.images),
-      timestamp: admin.firestore.FieldPath.serverTimestamp(),
+      timestamp: admin.firestore.FieldValue.serverTimestamp(),
     })
     .then(() => {
-      console.log(`SUCCESS: order:${session.id}`);
+      console.log(`SUCCESS - Order : ${session.id} added to database`);
     });
 };
 
@@ -37,19 +37,15 @@ export default async (req, res) => {
   if (req.method === "POST") {
     const requestBuffer = await buffer(req);
     const payload = requestBuffer.toString();
-    const signature = req.headers["stripe-signature"];
+    const sig = req.headers["stripe-signature"];
 
     let event;
 
     //   Verifying event is from stripe
     try {
-      event = stripe.webhooks.constructEvent(
-        payload,
-        signature,
-        endpointSecret
-      );
-    } catch (error) {
-      console.log("ERROR", error.message);
+      event = stripe.webhooks.constructEvent(payload, sig, endpointSecret);
+    } catch (err) {
+      console.log("ERROR", err.message);
       return res.status(400).send("Webhook error");
     }
 
@@ -59,9 +55,7 @@ export default async (req, res) => {
       const session = event.data.object;
 
       // Fulfilling the order
-      return fulfillOrder(session)
-        .then(() => res.status(200))
-        .catch((error) => res.status(400).send(error.message));
+      return fulfillOrder(session).then(() => res.status(200)).catch(err => res.status(400).send(`Webhook Error : ${err.message}`))
     }
   }
 };

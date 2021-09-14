@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@badrap/bar-of-progress": "^0.1.2",
     "@heroicons/react": "^1.0.4",
     "@reduxjs/toolkit": "^1.6.1",
     "@stripe/stripe-js": "^1.17.1",
@@ -14,6 +15,7 @@
     "firebase": "^9.0.2",
     "firebase-admin": "^9.11.1",
     "micro": "^9.3.4",
+    "moment": "^2.29.1",
     "next": "latest",
     "next-auth": "^3.29.0",
     "react": "^17.0.2",
